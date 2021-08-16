@@ -81,15 +81,13 @@ int main(int argc, char *argv[])
     else
     {
         len = count_numbers(argc, argv);
-        printf("len: %d\n", len);
-        cont = 1;
+        cont = 0;
         //tmp = malloc do tamanho de argc
         int tmp[5];
-
-        while (cont < argc)
+		argv = &argv[1];
+        while (cont < (argc - 1))
         {
-            tmp[cont - 1] = ft_atoi(argv[cont]);
-            printf("numero %d\n", tmp[cont - 1]);
+            tmp[cont] = ft_atoi(argv[cont]);
             cont++;
         }
 	}
