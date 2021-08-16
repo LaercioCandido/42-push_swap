@@ -92,11 +92,7 @@ int main(int argc, char *argv[])
             printf("numero %d\n", tmp[cont - 1]);
             cont++;
         }
-    }
-  
-  for(cont=0; cont < argc; cont++)
-    printf("%d Parametro: %s\n", cont,argv[cont]);
-  
+	}
   return (0);
 }
 
