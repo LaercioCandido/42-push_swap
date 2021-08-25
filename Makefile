@@ -1,7 +1,5 @@
 NAME = push_swap
-LIBFT = libft.a
 
-LIBFT_PATH = ./libraries/libft/
 INCLUDES = ./includes
 
 SRC = ./source/
@@ -15,8 +13,7 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	make -C $(LIBFT_PATH) $(LIBFT)
-	$(CC) $(CFLAGS) -I $(INCLUDES) -o $(NAME) $(OBJECTS) -L $(LIBFT_PATH) -lft
+	$(CC) $(FILES) $(CFLAGS) -I $(INCLUDES) -o $(NAME) $(OBJECTS)
 
 $(OBJECTS): $(FILES)
 	$(CC) $(CFLAGS) -g -c $(FILES)

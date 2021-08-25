@@ -228,7 +228,7 @@ static void	check_args(int argc, char **argv)
 
 int main(int argc, char *argv[])
 {
-	t_stack	stack;
+	//t_stack	stack;
 
 	if (argc < 2)
 		return (0);
