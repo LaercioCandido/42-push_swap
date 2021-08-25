@@ -175,6 +175,12 @@ double	ft_atoi(const char *nptr)
 
 //////
 
+static void	init_stacks(t_stack *stack_a, t_stack *stack_b)
+{
+	stack_a = NULL;
+	stack_b = NULL;
+}
+
 static int is_repeated(char **argv, int number, int i)
 {
 	int j;
@@ -228,7 +234,8 @@ static void	check_args(int argc, char **argv)
 
 int main(int argc, char *argv[])
 {
-	//t_stack	stack;
+	t_stack	stack_a;
+	t_stack stack_b;
 
 	if (argc < 2)
 		return (0);
@@ -244,6 +251,7 @@ int main(int argc, char *argv[])
 	printf("os argumentos: %s\n", *argv);
 	*argv++;}
 	*/
+	init_stacks(&stack_a, &stack_b);
 
 
 
