@@ -175,11 +175,75 @@ double	ft_atoi(const char *nptr)
 
 //////
 
+t_stack	*ft_dlstnew(int data)
+{
+	t_stack	*pointer;
+
+	pointer = (t_stack *)malloc(sizeof(t_stack));
+	if (!(pointer))
+		return_error();
+	pointer->data = data;
+	pointer->next = NULL;
+	pointer->previous = NULL;
+	return (pointer);
+}
+
+t_stack	*ft_dlstlast(t_stack *lst)
+{
+	t_stack	*pointer;
+
+	if (lst == NULL)
+		return (lst);
+	pointer = lst;
+	while (pointer->next != NULL)
+	{
+		pointer = pointer->next;
+	}
+	return (pointer);
+}
+
+void	ft_dlstadd_back(t_stack *lst, t_stack *new)
+{
+	t_stack	*pointer;
+
+	if (new == NULL)
+		return ;
+	if (lst == NULL)
+	{
+		lst = new;
+		return ;
+	}
+	pointer = ft_dlstlast(lst);
+	pointer->next = new;
+	new->previous = pointer;
+}
+
+//////////////
+
 static void	init_stacks(t_stack *stack_a, t_stack *stack_b)
 {
 	stack_a = NULL;
 	stack_b = NULL;
 }
+
+void init_stack_a(t_stack *stack_a, int argc, char **argv)
+{
+	int number;
+	int i;
+
+	i = 0;
+	number = (int)ft_atoi(argv[i]);
+	stack_a = ft_dlstnew(number); ////////////
+	while (i < (argc - 1))
+	{
+		i++;
+		number = (int)ft_atoi(argv[i]);
+		//printf("valor: %d\n",stack_a->next->data);
+		ft_dlstadd_back(stack_a, ft_dlstnew(number));
+	}
+}
+
+///////////////
 
 static int is_repeated(char **argv, int number, int i)
 {
@@ -252,8 +316,18 @@ int main(int argc, char *argv[])
 	*argv++;}
 	*/
 	init_stacks(&stack_a, &stack_b);
+	init_stack_a(&stack_a, argc, argv);
 
+	printf("os argumentos: %i\n", stack_a.data);
+	printf("os argumentos: %i\n", stack_a.next->data);
 
+	/*
+	while (stack_a.next != NULL)
+	{
+		printf("os argumentos: %d\n", *stack_a->data);
+		stack_a = stack_a->next;
+	}
+	*/
 
 	return (0);
 }

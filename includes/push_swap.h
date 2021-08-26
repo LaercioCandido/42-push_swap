@@ -11,13 +11,21 @@ typedef struct s_stack
     int             data;
     int             index;
     struct  s_stack *next;
-    struct  s_tack  *previous;
+    struct  s_stack  *previous;
 }               t_stack;
 
 void	return_error(void);
 static char	**check_params(int *argc, char **argv);
 static void	check_type_arg(char **argv, int i);
 static void	check_args(int argc, char **argv);
+static void init_stacks(t_stack *stack_a, t_stack *stack_b);
+void init_stack_a(t_stack *stack_a, int argc, char **argv);
+
+t_stack	*ft_dlstlast(t_stack *lst);
+t_stack	*ft_dlstnew(int data);
+void	ft_dlstadd_back(t_stack *lst, t_stack *new);
+
+
 /*
 double	ft_atoi(const char *nptr);
 int	    ft_isdigit(int c);
