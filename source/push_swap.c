@@ -317,17 +317,8 @@ int main(int argc, char *argv[])
 	if (argc == 1)
 		argv = check_params(&argc, argv);
 	check_args(argc, argv);
-	/*
-	printf("quantidade de argumentos: %d\n", argc);
-	while (*argv != NULL) {
-	printf("os argumentos: %s\n", *argv);
-	*argv++;}
-	*/
     init_stacks(&stack);
     init(&stack, argc, argv);
-
-	//printf("os argumentos: %i\n", stack.a->data);
-	//printf("os argumentos: %i\n", stack.a->next->data);
 
 	printf("argumento: %i\n", stack.a->data);
 	while (stack.a->next != NULL)
@@ -335,16 +326,5 @@ int main(int argc, char *argv[])
 		stack.a = stack.a->next;
 		printf("argumento: %i\n", stack.a->data);
 	}
-
-	//printf("os argumentos: %i\n", stack.a->next);
-
-	/*
-	while (stack_a.next != NULL)
-	{
-		printf("os argumentos: %d\n", *stack_a->data);
-		stack_a = stack_a->next;
-	}
-	*/
-
 	return (0);
 }
