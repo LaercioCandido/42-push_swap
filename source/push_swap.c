@@ -308,7 +308,6 @@ static void	check_args(int argc, char **argv)
 int main(int argc, char *argv[])
 {
 	t_stack	stack;
-	t_stack stack_b;
 
 	if (argc < 2)
 		return (0);
@@ -327,8 +326,17 @@ int main(int argc, char *argv[])
     init_stacks(&stack);
     init(&stack, argc, argv);
 
-	//printf("os argumentos: %i\n", stack_a.data);
-	//printf("os argumentos: %i\n", stack_a.next->data);
+	//printf("os argumentos: %i\n", stack.a->data);
+	//printf("os argumentos: %i\n", stack.a->next->data);
+
+	printf("argumento: %i\n", stack.a->data);
+	while (stack.a->next != NULL)
+	{
+		stack.a = stack.a->next;
+		printf("argumento: %i\n", stack.a->data);
+	}
+
+	//printf("os argumentos: %i\n", stack.a->next);
 
 	/*
 	while (stack_a.next != NULL)
