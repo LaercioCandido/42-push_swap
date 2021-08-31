@@ -175,11 +175,11 @@ double	ft_atoi(const char *nptr)
 
 //////
 
-t_stack	*ft_dlstnew(int data)
+t_dlist	*ft_dlstnew(int data)
 {
-	t_stack	*pointer;
+	t_dlist	*pointer;
 
-	pointer = (t_stack *)malloc(sizeof(t_stack));
+	pointer = (t_dlist *)malloc(sizeof(t_stack));
 	if (!(pointer))
 		return_error();
 	pointer->data = data;
@@ -188,9 +188,9 @@ t_stack	*ft_dlstnew(int data)
 	return (pointer);
 }
 
-t_stack	*ft_dlstlast(t_stack *lst)
+t_dlist	*ft_dlstlast(t_dlist *lst)
 {
-	t_stack	*pointer;
+	t_dlist	*pointer;
 
 	if (lst == NULL)
 		return (lst);
@@ -202,38 +202,39 @@ t_stack	*ft_dlstlast(t_stack *lst)
 	return (pointer);
 }
 
-void	ft_dlstadd_back(t_stack *lst, t_stack *new)
+void	ft_dlstadd_back(t_dlist **lst, t_dlist *new)
 {
-	t_stack	*pointer;
+	t_dlist	*pointer;
 
 	if (new == NULL)
 		return ;
 	if (lst == NULL)
 	{
-		lst = new;
+		*lst = new;
 		return ;
 	}
-	pointer = ft_dlstlast(lst);
+	pointer = ft_dlstlast(*lst);
 	pointer->next = new;
 	new->previous = pointer;
 }
 
 //////////////
 
-static void	init_stacks(t_stack *stack_a, t_stack *stack_b)
+static void	init_stacks(t_stack *stack)
 {
-	stack_a = NULL;
-	stack_b = NULL;
+	stack->a = NULL;
+	stack->b = NULL;
+	//stack->instr = NULL;
 }
 
-void init_stack_a(t_stack *stack_a, int argc, char **argv)
+void init_stack_a(t_dlist **stack_a, int argc, char **argv)
 {
 	int number;
 	int i;
 
 	i = 0;
 	number = (int)ft_atoi(argv[i]);
-	stack_a = ft_dlstnew(number); ////////////
+	*stack_a = ft_dlstnew(number); ////////////
 	while (i < (argc - 1))
 	{
 		i++;
@@ -241,6 +242,13 @@ void init_stack_a(t_stack *stack_a, int argc, char **argv)
 		//printf("valor: %d\n",stack_a->next->data);
 		ft_dlstadd_back(stack_a, ft_dlstnew(number));
 	}
+}
+
+void	init(t_stack *stack, int argc, char **argv)
+{
+	init_stack_a(&stack->a, argc, argv);
+	//init_aux(stack->a, aux, argc);
+	//fill_stack_indexes(stack, aux);
 }
 
 ///////////////
@@ -296,9 +304,10 @@ static void	check_args(int argc, char **argv)
 	}
 }
 
+
 int main(int argc, char *argv[])
 {
-	t_stack	stack_a;
+	t_stack	stack;
 	t_stack stack_b;
 
 	if (argc < 2)
@@ -315,11 +324,11 @@ int main(int argc, char *argv[])
 	printf("os argumentos: %s\n", *argv);
 	*argv++;}
 	*/
-	init_stacks(&stack_a, &stack_b);
-	init_stack_a(&stack_a, argc, argv);
+    init_stacks(&stack);
+    init(&stack, argc, argv);
 
-	printf("os argumentos: %i\n", stack_a.data);
-	printf("os argumentos: %i\n", stack_a.next->data);
+	//printf("os argumentos: %i\n", stack_a.data);
+	//printf("os argumentos: %i\n", stack_a.next->data);
 
 	/*
 	while (stack_a.next != NULL)
