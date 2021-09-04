@@ -234,22 +234,23 @@ void init_stack_a(t_dlist **stack_a, int argc, char **argv)
 
 	i = 0;
 	number = (int)ft_atoi(argv[i]);
-	*stack_a = ft_dlstnew(number); ////////////
+	*stack_a = ft_dlstnew(number);
 	while (i < (argc - 1))
 	{
 		i++;
 		number = (int)ft_atoi(argv[i]);
-		//printf("valor: %d\n",stack_a->next->data);
 		ft_dlstadd_back(stack_a, ft_dlstnew(number));
 	}
 }
 
+/*
 void	init(t_stack *stack, int argc, char **argv)
 {
 	init_stack_a(&stack->a, argc, argv);
 	//init_aux(stack->a, aux, argc);
 	//fill_stack_indexes(stack, aux);
 }
+*/
 
 ///////////////
 
@@ -273,7 +274,7 @@ static void	check_type_arg(char **argv, int i)
 	double	number;
 
 	j = 0;
-	if (argv[i][j] == '-')
+	if (argv[i][j] == '-' || argv[i][j] == '+')
 	{
 		j++;
 		if (!argv[i][j])
@@ -318,13 +319,19 @@ int main(int argc, char *argv[])
 		argv = check_params(&argc, argv);
 	check_args(argc, argv);
     init_stacks(&stack);
-    init(&stack, argc, argv);
+    //init(&stack, argc, argv);
+	init_stack_a(&stack.a, argc, argv);
 
+
+	///
 	printf("argumento: %i\n", stack.a->data);
 	while (stack.a->next != NULL)
 	{
 		stack.a = stack.a->next;
 		printf("argumento: %i\n", stack.a->data);
 	}
+	///
+
+
 	return (0);
 }
