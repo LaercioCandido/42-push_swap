@@ -314,7 +314,22 @@ static void	check_args(int argc, char **argv)
 		i++;
 	}
 }
+/*
+static void     push_b(t_stack	*stack)
+{
+	t_dlist *top_a;
+    int     number;
 
+    top_a = stack->a;
+	number = top_a->data;
+    stack->a = top_a->next;
+    if (stack->b == NULL)
+        stack->b = ft_dlstnew(number);
+    else
+        ft_dlstadd_front(&stack->b, ft_dlstnew(number));
+	ft_putstr_fd("pb\n", 1);
+}
+*/
 
 int main(int argc, char *argv[])
 {
@@ -332,19 +347,23 @@ int main(int argc, char *argv[])
     //init(&stack, argc, argv);
 	init_stack_a(&stack.a, argc, argv);
 
-
 	/*
-	if (stack.a->data > stack.a->next->data)
-		rotate_a(&stack);
-	*/
-
-	printf("argumento: %i\n", stack.a->data);
+	push_b(&stack);
+	
+	printf("argumento A: %i\n", stack.a->data);
 	while (stack.a->next != NULL)
 	{
 		stack.a = stack.a->next;
-		printf("argumento: %i\n", stack.a->data);
+		printf("argumento A: %i\n", stack.a->data);
 	}
-	
+
+	printf("\nargumento B: %i\n", stack.b->data);
+	while (stack.b->next != NULL)
+	{
+		stack.b = stack.b->next;
+		printf("argumento B: %i\n", stack.b->data);
+	}
+	*/	
 
 	return (0);
 }

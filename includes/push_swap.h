@@ -38,14 +38,16 @@ void	swap_nodes(t_dlist *first, t_dlist *second);
 void	swap_a(t_stack *stack);
 void	swap_b(t_stack *stack);
 void	swap_both(t_stack *stack);
-static void	rotate_list(t_dlist **stack);
+//static void	rotate_list(t_dlist **stack);
 void	rotate_a(t_stack *stack);
 void	rotate_b(t_stack *stack);
 void	rotate_both(t_stack *stack);
-static void	reverse_rotate_list(t_dlist **stack);
+//static void	reverse_rotate_list(t_dlist **stack);
 void	reverse_rotate_a(t_stack *stack);
 void	reverse_rotate_b(t_stack *stack);
 void	reverse_rotate_both(t_stack *stack);
+void   push_a(t_stack	*stack);
+void   push_b(t_stack	*stack);
 
 void	ft_putstr_fd(char *s, int fd);
 /*
