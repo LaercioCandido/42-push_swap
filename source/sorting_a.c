@@ -25,7 +25,6 @@ void    sort_three_nodes(t_stack *stack)
         reverse_rotate_a(stack);
 }
 
-
 int     stack_ordered(t_stack *stack, int size)
 {
 	int		i;
@@ -53,9 +52,9 @@ void	sort_stack(t_stack *stack, int qtt_node)
     else if (qtt_node == 2)
         swap_a(stack);
     else if (qtt_node == 3)
-        sort_three_nodes(stack);/*
+        sort_three_nodes(stack);
     else if (qtt_node <= 5)
-        sort_five_nodes(stack);
+        sort_five_nodes(stack);/*
     else
         radix_sort(stack);
         */
