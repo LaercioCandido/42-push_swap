@@ -253,15 +253,6 @@ void init_stack_a(t_dlist **stack_a, int argc, char **argv)
 	}
 }
 
-/*
-void	init(t_stack *stack, int argc, char **argv)
-{
-	init_stack_a(&stack->a, argc, argv);
-	//init_aux(stack->a, aux, argc);
-	//fill_stack_indexes(stack, aux);
-}
-*/
-
 ///////////////
 
 static int is_repeated(char **argv, int number, int i)
@@ -314,22 +305,7 @@ static void	check_args(int argc, char **argv)
 		i++;
 	}
 }
-/*
-static void     push_b(t_stack	*stack)
-{
-	t_dlist *top_a;
-    int     number;
 
-    top_a = stack->a;
-	number = top_a->data;
-    stack->a = top_a->next;
-    if (stack->b == NULL)
-        stack->b = ft_dlstnew(number);
-    else
-        ft_dlstadd_front(&stack->b, ft_dlstnew(number));
-	ft_putstr_fd("pb\n", 1);
-}
-*/
 
 int main(int argc, char *argv[])
 {
@@ -344,26 +320,29 @@ int main(int argc, char *argv[])
 		argv = check_params(&argc, argv);
 	check_args(argc, argv);
     init_stacks(&stack);
-    //init(&stack, argc, argv);
 	init_stack_a(&stack.a, argc, argv);
+	sort_stack(&stack, argc);
 
 	/*
 	push_b(&stack);
-	
+	*/
+
 	printf("argumento A: %i\n", stack.a->data);
 	while (stack.a->next != NULL)
 	{
 		stack.a = stack.a->next;
 		printf("argumento A: %i\n", stack.a->data);
 	}
-
-	printf("\nargumento B: %i\n", stack.b->data);
+	/*
+	if (stack.b != NULL)
+		printf("\nargumento B: %i\n", stack.b->data);
 	while (stack.b->next != NULL)
 	{
 		stack.b = stack.b->next;
 		printf("argumento B: %i\n", stack.b->data);
 	}
-	*/	
+	*/
+		
 
 	return (0);
 }
