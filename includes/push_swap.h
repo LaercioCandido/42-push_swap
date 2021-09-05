@@ -27,13 +27,18 @@ static void	check_type_arg(char **argv, int i);
 static void	check_args(int argc, char **argv);
 static void	init_stacks(t_stack *stack);
 void init_stack_a(t_dlist **stack_a, int argc, char **argv);
-void	init(t_stack *stack, int argc, char **argv);
+//void	init(t_stack *stack, int argc, char **argv);
 
 t_dlist	*ft_dlstlast(t_dlist *lst);
 t_dlist	*ft_dlstnew(int data);
 void	ft_dlstadd_back(t_dlist **lst, t_dlist *new);
 
+void	swap_nodes(t_dlist *first, t_dlist *second);
+void	swap_a(t_stack *stack);
+void	swap_b(t_stack *stack);
+void	swap_both(t_stack *stack);
 
+void	ft_putstr_fd(char *s, int fd);
 /*
 double	ft_atoi(const char *nptr);
 int	    ft_isdigit(int c);

@@ -324,14 +324,18 @@ int main(int argc, char *argv[])
 
 
 	///
+	/*
 	printf("argumento: %i\n", stack.a->data);
 	while (stack.a->next != NULL)
 	{
 		stack.a = stack.a->next;
 		printf("argumento: %i\n", stack.a->data);
 	}
+	*/
 	///
 
+	if (stack.a->data > stack.a->next->data)
+		swap_a(&stack);
 
 	return (0);
 }
