@@ -188,6 +188,16 @@ t_dlist	*ft_dlstnew(int data)
 	return (pointer);
 }
 
+void	ft_dlstadd_front(t_dlist **lst, t_dlist *new)
+{
+	t_dlist	*pointer;
+
+	pointer = *lst;
+	*lst = new;
+	new->next = pointer;
+	pointer->previous = new;
+}
+
 t_dlist	*ft_dlstlast(t_dlist *lst)
 {
 	t_dlist	*pointer;
@@ -326,8 +336,7 @@ int main(int argc, char *argv[])
 	/*
 	if (stack.a->data > stack.a->next->data)
 		rotate_a(&stack);
-
-	
+	*/
 
 	printf("argumento: %i\n", stack.a->data);
 	while (stack.a->next != NULL)
@@ -335,7 +344,7 @@ int main(int argc, char *argv[])
 		stack.a = stack.a->next;
 		printf("argumento: %i\n", stack.a->data);
 	}
-	*/
+	
 
 	return (0);
 }

@@ -1,5 +1,4 @@
 #include "../includes/push_swap.h"
-#include <stdio.h>
 
 static void	rotate_list(t_dlist **stack)
 {

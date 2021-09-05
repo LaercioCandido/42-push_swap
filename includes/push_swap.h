@@ -31,6 +31,7 @@ void init_stack_a(t_dlist **stack_a, int argc, char **argv);
 
 t_dlist	*ft_dlstlast(t_dlist *lst);
 t_dlist	*ft_dlstnew(int data);
+void	ft_dlstadd_front(t_dlist **lst, t_dlist *new);
 void	ft_dlstadd_back(t_dlist **lst, t_dlist *new);
 
 void	swap_nodes(t_dlist *first, t_dlist *second);
@@ -41,6 +42,10 @@ static void	rotate_list(t_dlist **stack);
 void	rotate_a(t_stack *stack);
 void	rotate_b(t_stack *stack);
 void	rotate_both(t_stack *stack);
+static void	reverse_rotate_list(t_dlist **stack);
+void	reverse_rotate_a(t_stack *stack);
+void	reverse_rotate_b(t_stack *stack);
+void	reverse_rotate_both(t_stack *stack);
 
 void	ft_putstr_fd(char *s, int fd);
 /*
