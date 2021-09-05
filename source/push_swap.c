@@ -323,8 +323,12 @@ int main(int argc, char *argv[])
 	init_stack_a(&stack.a, argc, argv);
 
 
-	///
 	/*
+	if (stack.a->data > stack.a->next->data)
+		rotate_a(&stack);
+
+	
+
 	printf("argumento: %i\n", stack.a->data);
 	while (stack.a->next != NULL)
 	{
@@ -332,10 +336,6 @@ int main(int argc, char *argv[])
 		printf("argumento: %i\n", stack.a->data);
 	}
 	*/
-	///
-
-	if (stack.a->data > stack.a->next->data)
-		swap_a(&stack);
 
 	return (0);
 }
