@@ -1,11 +1,11 @@
 #include "../../includes/push_swap.h"
 
-void     push_second_smallest_to_b(t_stack *stack, int position)
+void    push_second_smallest_to_b(t_stack *stack, int position)
 {
-	if (position == 2)
-		swap_a(stack);
-	if (position == 3)
-	{
+    if (position == 2)
+        swap_a(stack);
+    if (position == 3)
+    {
 		rotate_a(stack);
 		swap_a(stack);
 	}
@@ -46,7 +46,6 @@ void    find_first(t_stack *stack)
     position = 1;
     smallest = stack->a->data;
     current = stack->a;
-    //while (i <= qtt_nodes)
     while (current->next != NULL)
     {
         current = current->next;
@@ -71,16 +70,11 @@ void    find_first(t_stack *stack)
 
 void    sort_five_nodes(t_stack *stack, int qtt_nodes)
 {
-    //int     position;
-
     if (qtt_nodes == 5)
-		find_first(stack);
+        find_first(stack);
     find_first(stack);
     if (stack_ordered(stack, 4) == 1)
         sort_three_nodes(stack);
-    //if (qtt_nodes == 5 && stack->b != NULL)
     while (stack->b)
         push_a(stack);
-    //if (stack->b != NULL)
-    //push_a(stack);
 }
