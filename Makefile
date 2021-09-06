@@ -33,7 +33,7 @@ $(NAME):	$(OBJS)
 			@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(FLAGS)
 			@echo "created push_swap executable file successfully!"
 
-test: $(NAME)
+test:		$(NAME)
 			cp ./tools/checker_linux .
 			bash ./tools/tester.sh
 
@@ -46,11 +46,8 @@ clean:
 			@$(RM) -r $(DIR_OBJS)
 			@echo "Cleanup completed!"
 
-fclean:	
+fclean: 	clean
 			@$(RM) $(NAME)
-			@$(RM) $(OBJS)
-			@$(RM) -r $(DIR_OBJS)
-			@echo "Cleanup completed!"
 
 re:			fclean all
 
