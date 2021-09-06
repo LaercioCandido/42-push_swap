@@ -79,8 +79,8 @@ void    sort_five_nodes(t_stack *stack, int qtt_nodes)
     find_first(stack);
     if (stack_ordered(stack, 4) == 1)
         sort_three_nodes(stack);
-    if (qtt_nodes == 5 && stack->b != NULL)
+    //if (qtt_nodes == 5 && stack->b != NULL)
         push_a(stack);
-    if (stack->b != NULL)
+    //if (stack->b != NULL)
         push_a(stack);
 }

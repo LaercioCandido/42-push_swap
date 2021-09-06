@@ -5,6 +5,8 @@ void     push_a(t_stack	*stack)
     t_dlist *top_b;
     int     number;
 
+    if (stack->b == NULL)
+        return ;
     top_b = stack->b;
 	number = top_b->data;
     stack->b = top_b->next;
@@ -20,6 +22,8 @@ void     push_b(t_stack	*stack)
 	t_dlist *top_a;
     int     number;
 
+    if (stack->a == NULL)
+        return ;
     top_a = stack->a;
 	number = top_a->data;
     stack->a = top_a->next;
