@@ -9,16 +9,16 @@
 typedef struct s_dlist
 {
     int                data;
-    int                index;
+    //int                index;
     struct s_dlist    *next;
     struct s_dlist    *previous;
 }                t_dlist;
 
 typedef struct s_stack
 {
-    t_dlist        *a;
-    t_dlist        *b;
-    //t_list        *instr;
+    t_dlist     *a;
+    t_dlist     *b;
+    int         largest_number;
 }                t_stack;
 
 void	return_error(void);
@@ -26,7 +26,9 @@ static char	**check_params(int *argc, char **argv);
 static void	check_type_arg(char **argv, int i);
 static void	check_args(int argc, char **argv);
 static void	init_stacks(t_stack *stack);
-void init_stack_a(t_dlist **stack_a, int argc, char **argv);
+void init_stack_a(t_dlist **stack_a, int argc, int *normalized);
+int	*normalized_by_index(char **argv, int size);
+void	quick_sort(int *array, int start, int end);
 //void	init(t_stack *stack, int argc, char **argv);
 
 t_dlist	*ft_dlstlast(t_dlist *lst);
@@ -51,8 +53,11 @@ void	sort_stack(t_stack *stack, int argc);
 int	    stack_ordered(t_stack *stack, int size);
 void    sort_three_nodes(t_stack *stack);
 void    sort_five_nodes(t_stack *stack, int qtt_nodes);
+void	radix_sort(t_stack *stack);
 
 void	ft_putstr_fd(char *s, int fd);
+void	*ft_calloc(size_t count, size_t size);
+
 /*
 double	ft_atoi(const char *nptr);
 int	    ft_isdigit(int c);

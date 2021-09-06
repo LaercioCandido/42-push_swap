@@ -80,6 +80,7 @@ void    sort_five_nodes(t_stack *stack, int qtt_nodes)
     if (stack_ordered(stack, 4) == 1)
         sort_three_nodes(stack);
     //if (qtt_nodes == 5 && stack->b != NULL)
+    while (stack->b)
         push_a(stack);
     //if (stack->b != NULL)
         push_a(stack);

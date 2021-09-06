@@ -126,6 +126,26 @@ static char	**check_params(int *argc, char **argv)
 
 ///// fçoes aninhadas
 
+void	*ft_calloc(size_t count, size_t size)
+{
+	char	*mem;
+	size_t	i;
+	size_t	len;
+
+	len = count * size;
+	mem = malloc(len);
+	if (mem == 0)
+		return (0);
+	i = 0;
+	while (len > 0)
+	{
+		mem[i] = '\0';
+		i++;
+		len--;
+	}
+	return (mem);
+}
+
 int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
@@ -234,23 +254,69 @@ static void	init_stacks(t_stack *stack)
 {
 	stack->a = NULL;
 	stack->b = NULL;
-	//stack->instr = NULL;
+	stack->largest_number = INT_MIN;
 }
 
-void init_stack_a(t_dlist **stack_a, int argc, char **argv)
+//void init_stack_a(t_dlist **stack_a, int argc, char **argv)
+void init_stack_a(t_dlist **stack_a, int argc, int *normalized)
 {
-	int number;
+	//int number;
 	int i;
 
 	i = 0;
-	number = (int)ft_atoi(argv[i]);
-	*stack_a = ft_dlstnew(number);
+	//number = (int)ft_atoi(argv[i]);
+	*stack_a = ft_dlstnew(normalized[i]);
 	while (i < (argc - 1))
 	{
 		i++;
-		number = (int)ft_atoi(argv[i]);
-		ft_dlstadd_back(stack_a, ft_dlstnew(number));
+		//number = (int)ft_atoi(argv[i]);
+		ft_dlstadd_back(stack_a, ft_dlstnew(normalized[i]));
 	}
+}
+
+static void	setup_array_from_argv(char **argv, int *array, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		array[i] = ft_atoi(argv[i]);
+		i++;
+	}
+}
+
+int	*normalized_by_index(char **argv, int size)
+{
+	int		i;
+	int		*original;
+	int		*sorted;
+	int		*normalized;
+	int		j;
+
+	original = (int *)ft_calloc(sizeof(int), size);
+	sorted = (int *)ft_calloc(sizeof(int), size);
+	normalized = (int *)ft_calloc(sizeof(int), size);
+	//printf("A\n");
+	setup_array_from_argv(argv, original, size);
+	//printf("B\n");
+	setup_array_from_argv(argv, sorted, size);
+	//printf("C\n");
+	quick_sort(sorted, 0, size - 1);
+	//printf("D\n");
+	i = 0;
+	while (i < size)
+	{
+		j = 0;
+		while (original[i] != sorted[j])
+			j++;
+		normalized[i] = j;
+		//printf("normalized[%i] = %i\n", i, normalized[i]);
+		i++;
+	}
+	free(original);
+	free(sorted);
+	return (normalized);
 }
 
 ///////////////
@@ -310,6 +376,7 @@ static void	check_args(int argc, char **argv)
 int main(int argc, char *argv[])
 {
 	t_stack	stack;
+	int		*normalized;
 
 	if (argc < 2)
 		return (0);
@@ -320,12 +387,18 @@ int main(int argc, char *argv[])
 		argv = check_params(&argc, argv);
 	check_args(argc, argv);
     init_stacks(&stack);
-	init_stack_a(&stack.a, argc, argv);
-	sort_stack(&stack, argc);
-
+	normalized = normalized_by_index(argv, argc);
 	/*
-	push_b(&stack);
+	int i = 0;
+	while (i < 2)
+	{
+		printf("normalized[%d] = %d\n", i, normalized[i]);
+		i++;
+	}
 	*/
+	//init_stack_a(&stack.a, argc, argv);
+	init_stack_a(&stack.a, argc, normalized);
+
 
 	printf("argumento A: %i\n", stack.a->data);
 	while (stack.a->next != NULL)
@@ -333,7 +406,21 @@ int main(int argc, char *argv[])
 		stack.a = stack.a->next;
 		printf("argumento A: %i\n", stack.a->data);
 	}
+	//sort_stack(&stack, argc);
+
 	/*
+	push_b(&stack);
+	*/
+
+	/*
+	printf("argumento A: %i\n", stack.a->data);
+	while (stack.a->next != NULL)
+	{
+		stack.a = stack.a->next;
+		printf("argumento A: %i\n", stack.a->data);
+	}
+
+	
 	if (stack.b != NULL)
 		printf("\nargumento B: %i\n", stack.b->data);
 	while (stack.b->next != NULL)
