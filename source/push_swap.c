@@ -297,13 +297,9 @@ int	*normalized_by_index(char **argv, int size)
 	original = (int *)ft_calloc(sizeof(int), size);
 	sorted = (int *)ft_calloc(sizeof(int), size);
 	normalized = (int *)ft_calloc(sizeof(int), size);
-	//printf("A\n");
 	setup_array_from_argv(argv, original, size);
-	//printf("B\n");
 	setup_array_from_argv(argv, sorted, size);
-	//printf("C\n");
 	quick_sort(sorted, 0, size - 1);
-	//printf("D\n");
 	i = 0;
 	while (i < size)
 	{
@@ -311,7 +307,6 @@ int	*normalized_by_index(char **argv, int size)
 		while (original[i] != sorted[j])
 			j++;
 		normalized[i] = j;
-		//printf("normalized[%i] = %i\n", i, normalized[i]);
 		i++;
 	}
 	free(original);
@@ -398,19 +393,7 @@ int main(int argc, char *argv[])
 	*/
 	//init_stack_a(&stack.a, argc, argv);
 	init_stack_a(&stack.a, argc, normalized);
-
-
-	printf("argumento A: %i\n", stack.a->data);
-	while (stack.a->next != NULL)
-	{
-		stack.a = stack.a->next;
-		printf("argumento A: %i\n", stack.a->data);
-	}
-	//sort_stack(&stack, argc);
-
-	/*
-	push_b(&stack);
-	*/
+	sort_stack(&stack, argc);
 
 	/*
 	printf("argumento A: %i\n", stack.a->data);
