@@ -1,4 +1,4 @@
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 int	ft_dlstsize(t_dlist *lst)
 {

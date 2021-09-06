@@ -1,5 +1,4 @@
-#include "../includes/push_swap.h"
-#include <stdio.h>
+#include "../../includes/push_swap.h"
 
 void     push_second_smallest_to_b(t_stack *stack, int position)
 {
@@ -72,7 +71,7 @@ void    find_first(t_stack *stack)
 
 void    sort_five_nodes(t_stack *stack, int qtt_nodes)
 {
-    int     position;
+    //int     position;
 
     if (qtt_nodes == 5)
 		find_first(stack);
@@ -83,5 +82,5 @@ void    sort_five_nodes(t_stack *stack, int qtt_nodes)
     while (stack->b)
         push_a(stack);
     //if (stack->b != NULL)
-        push_a(stack);
+    //push_a(stack);
 }

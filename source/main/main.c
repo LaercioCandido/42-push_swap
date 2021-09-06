@@ -1,6 +1,4 @@
-#include "../includes/push_swap.h"
-#include <stdio.h>
-
+#include "../../includes/push_swap.h"
 
 static int is_repeated(char **argv, int number, int i)
 {

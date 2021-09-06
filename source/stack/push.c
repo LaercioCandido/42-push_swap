@@ -1,4 +1,4 @@
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 void     push_a(t_stack	*stack)
 {
@@ -14,7 +14,8 @@ void     push_a(t_stack	*stack)
         stack->a = ft_dlstnew(number);
     else
         ft_dlstadd_front(&stack->a, ft_dlstnew(number));
-	ft_putstr_fd("pa\n", 1);
+	
+    ft_putstr_fd("pa\n", 1);
 }
 
 void     push_b(t_stack	*stack)
@@ -30,6 +31,8 @@ void     push_b(t_stack	*stack)
     if (stack->b == NULL)
         stack->b = ft_dlstnew(number);
     else
+    {
         ft_dlstadd_front(&stack->b, ft_dlstnew(number));
+    }
 	ft_putstr_fd("pb\n", 1);
 }

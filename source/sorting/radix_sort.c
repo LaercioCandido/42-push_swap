@@ -1,5 +1,4 @@
-#include "../includes/push_swap.h"
-#include <stdio.h>
+#include "../../includes/push_swap.h"
 
 int	get_bit(int largest_data, int i)
 {

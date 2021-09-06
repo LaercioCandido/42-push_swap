@@ -1,4 +1,4 @@
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 void	swap_nodes(t_dlist *first, t_dlist *second)
 {

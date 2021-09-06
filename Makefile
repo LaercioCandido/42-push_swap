@@ -1,41 +1,57 @@
-NAME = push_swap
 
-INCLUDES = ./includes
+NAME		= push_swap
 
-SRC = ./source/
+CC			= clang
+CFLAGS		= -Wall -Wextra -Werror -g
+RM			= /bin/rm -f
 
-FILES = $(SRC)push_swap.c
-OBJECTS = push_swap.o
+DIR_SRCS	= source
+DIR_OBJS	= objs
+SUBDIRS		= aux_libft main sorting stack
 
-CC = clang
-CFLAGS = -Wall -Wextra -Werror
+SRCS_DIRS	= $(foreach dir, $(SUBDIRS), $(addprefix $(DIR_SRCS)/, $(dir)))
+OBJS_DIRS	= $(foreach dir, $(SUBDIRS), $(addprefix $(DIR_OBJS)/, $(dir)))
+SRCS		= $(foreach dir, $(SRCS_DIRS), $(wildcard $(dir)/*.c))
+OBJS		= $(subst $(DIR_SRCS), $(DIR_OBJS), $(SRCS:.c=.o))
 
-all: $(NAME)
+ifeq ($(SANITIZE_A),true)
+	CFLAGS += -fsanitize=address -fno-omit-frame-pointer
+endif
 
-$(NAME): $(OBJECTS)
-	$(CC) $(FILES) $(CFLAGS) -I $(INCLUDES) -o $(NAME) $(OBJECTS)
+ifeq ($(SANITIZE_L),true)
+	CFLAGS += -fsanitize=leak -fno-omit-frame-pointer
+endif
 
-$(OBJECTS): $(FILES)
-	$(CC) $(CFLAGS) -g -c $(FILES)
+$(DIR_OBJS)/%.o :	$(DIR_SRCS)/%.c
+			@mkdir -p $(DIR_OBJS) $(OBJS_DIRS)
+			@$(CC) $(CFLAGS) -c $< -o $@
+			@echo "Compiled "$<" successfully!"
+
+all:		$(NAME)
+
+$(NAME):	$(OBJS)
+			@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(FLAGS)
+			@echo "created push_swap executable file successfully!"
 
 test: $(NAME)
-	cp ./tools/checker_linux .
-	bash ./tools/tester.sh
+			cp ./tools/checker_linux .
+			bash ./tools/tester.sh
 
-visual: $(NAME)
-	cp ./tools/pyviz.py .
-	python3 pyviz.py `ruby -e "puts (-200..200).to_a.shuffle.join(' ')"`
+fclean:
+			@rm -f $(NAME)
+			@rm -f $(OBJECTS) $(NAME) screen_shot.bmp
 
 clean:
-	make -C $(LIBFT_PATH) fclean
-	$(RM) $(OBJECTS) $(BONUS_OBJECTS)
-	$(RM) checker_linux
-	$(RM) pyviz.py
+			@$(RM) $(OBJS)
+			@$(RM) -r $(DIR_OBJS)
+			@echo "Cleanup completed!"
 
-fclean: clean
-	make -C $(LIBFT_PATH) fclean
-	$(RM) $(NAME)
-	
-re: fclean all 
+fclean:	
+			@$(RM) $(NAME)
+			@$(RM) $(OBJS)
+			@$(RM) -r $(DIR_OBJS)
+			@echo "Cleanup completed!"
 
-.PHONY: all clean fclean re 
+re:			fclean all
+
+.PHONY:		all clean fclean re
