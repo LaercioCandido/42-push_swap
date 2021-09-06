@@ -9,7 +9,7 @@ static void	reverse_rotate_list(t_dlist **stack)
 
 	head = *stack;
     last = ft_dlstlast(*stack);
-	if (head == NULL || last == NULL || pointer == NULL)
+	if (head == NULL || last == NULL)
 		return ;
     pointer = last->previous;
     pointer->next = NULL;

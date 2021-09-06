@@ -50,7 +50,7 @@ void    push_b(t_stack	*stack);
 void	sort_stack(t_stack *stack, int argc);
 int	    stack_ordered(t_stack *stack, int size);
 void    sort_three_nodes(t_stack *stack);
-void    sort_five_nodes(t_stack *stack);
+void    sort_five_nodes(t_stack *stack, int qtt_nodes);
 
 void	ft_putstr_fd(char *s, int fd);
 /*
