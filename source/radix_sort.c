@@ -13,37 +13,35 @@ int	most_significant_bit(int largest_data)
 	i = 31;
 	while (get_bit(largest_data, i) != 1)
 		i--;
-   	printf("significant: %i\n", i);
 	return (i);
 }
+
 
 int	remaining_nodes_are_ordered(t_stack *stack)
 {
 	t_dlist	*current;
-	//int		i;
+	int		i;
+    int     size_list;
 
-	//i = 0;
+	i = 0;
+    size_list = ft_dlstsize(stack->a);
 	current = stack->a;
-	//while (i < stack->nodes_on_a - 1)
-    while (current)
+	while (i < size_list - 1)
 	{
 		if (current->data > current->next->data)
-			return (1);
+			return (0);
 		current = current->next;
-	//	i++;
+		i++;
 	}
-	return (0);
+	return (1);
 }
 
 static void	push_bits_on_zero(t_stack *stack, int i)
 {
 	int	j;
-    //t_dlist *current;
 
 	j = 0;
 	while (j < (stack->largest_data + 1))
-    //current = stack->a;
-    //while (current)
 	{
 		if (get_bit(stack->a->data, i) == 0)
 			push_b(stack);
@@ -52,23 +50,21 @@ static void	push_bits_on_zero(t_stack *stack, int i)
 		if (remaining_nodes_are_ordered(stack))
 			break ;
 		j++;
-        //current = current->next;
 	}
 }
 
 void	radix_sort(t_stack *stack)
 {
 	int	i;
-	int	loop_count;
+	int	count;
 
 	i = 0;
-	loop_count = most_significant_bit(stack->largest_data);
-	while (i <= loop_count)
+	count = most_significant_bit(stack->largest_data);
+	while (i <= count)
 	{
 		push_bits_on_zero(stack, i);
-		//return_nodes_to_a(stack);
-        while (stack->b)
-            push_a(stack);
+		while (stack->b != NULL)
+		    push_a(stack);
 		i++;
 	}
 }

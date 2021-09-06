@@ -36,6 +36,7 @@ t_dlist	*ft_dlstlast(t_dlist *lst);
 t_dlist	*ft_dlstnew(int data);
 void	ft_dlstadd_front(t_dlist **lst, t_dlist *new);
 void	ft_dlstadd_back(t_dlist **lst, t_dlist *new);
+int	    ft_dlstsize(t_dlist *lst);
 
 void	swap_nodes(t_dlist *first, t_dlist *second);
 void	swap_a(t_stack *stack);

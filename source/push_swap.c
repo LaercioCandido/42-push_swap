@@ -195,6 +195,21 @@ double	ft_atoi(const char *nptr)
 
 //////
 
+int	ft_dlstsize(t_dlist *lst)
+{
+	t_dlist	*aux;
+	int		size;
+
+	aux = lst;
+	size = 0;
+	while (aux != NULL)
+	{
+		size++;
+		aux = aux->next;
+	}
+	return (size);
+}
+
 t_dlist	*ft_dlstnew(int data)
 {
 	t_dlist	*pointer;
