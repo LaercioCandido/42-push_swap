@@ -1,7 +1,7 @@
 #include "../includes/push_swap.h"
 #include <stdio.h>
 
-void    first_smallest(t_stack *stack, int qtt_nodes)
+void    first_smallest(t_stack *stack)
 {
     int     i;
     int     position;
@@ -11,15 +11,15 @@ void    first_smallest(t_stack *stack, int qtt_nodes)
     i = 2;
     position = 1;
     smallest = stack->a->data;
-    current = stack->a->next;
-    while (i <= qtt_nodes)
+    current = stack->a;
+    while (current->next != NULL)
     {
+        current = current->next;
         if (current->data < smallest)
         {
             smallest = current->data;
             position = i;
         }
-        current = current->next;
         i++;
     }
     printf("position smallest: %d\n", position);
@@ -29,7 +29,7 @@ void    first_smallest(t_stack *stack, int qtt_nodes)
 
 void    sort_five_nodes(t_stack *stack)
 {
-    first_smallest(stack, 5);
+    first_smallest(stack);
     //second_smallest(stack);
     //sort_three_nodes(stack);
     //push_a(stack);
