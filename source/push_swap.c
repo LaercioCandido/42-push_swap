@@ -254,7 +254,7 @@ static void	init_stacks(t_stack *stack)
 {
 	stack->a = NULL;
 	stack->b = NULL;
-	stack->largest_number = INT_MIN;
+	stack->largest_data = INT_MIN;
 }
 
 //void init_stack_a(t_dlist **stack_a, int argc, char **argv)
@@ -367,6 +367,20 @@ static void	check_args(int argc, char **argv)
 	}
 }
 
+void		largest_data(t_stack *stack)
+{
+	t_dlist *current;
+
+	current = stack->a;
+	while (current)
+	{
+		if (current->data > stack->largest_data)
+			stack->largest_data = current->data;
+		//printf("stack->a: %i\n", current->data);
+		current = current->next;
+	}
+}
+
 
 int main(int argc, char *argv[])
 {
@@ -393,6 +407,7 @@ int main(int argc, char *argv[])
 	*/
 	//init_stack_a(&stack.a, argc, argv);
 	init_stack_a(&stack.a, argc, normalized);
+	largest_data(&stack); //	//stack->largest_data = argc;
 	sort_stack(&stack, argc);
 
 	/*
@@ -413,6 +428,6 @@ int main(int argc, char *argv[])
 	}
 	*/
 		
-
+	free(normalized);
 	return (0);
 }

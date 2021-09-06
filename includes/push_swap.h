@@ -18,7 +18,7 @@ typedef struct s_stack
 {
     t_dlist     *a;
     t_dlist     *b;
-    int         largest_number;
+    int         largest_data;
 }                t_stack;
 
 void	return_error(void);
@@ -29,6 +29,7 @@ static void	init_stacks(t_stack *stack);
 void init_stack_a(t_dlist **stack_a, int argc, int *normalized);
 int	*normalized_by_index(char **argv, int size);
 void	quick_sort(int *array, int start, int end);
+void		largest_data(t_stack *stack);
 //void	init(t_stack *stack, int argc, char **argv);
 
 t_dlist	*ft_dlstlast(t_dlist *lst);
