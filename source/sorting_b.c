@@ -12,7 +12,8 @@ void     push_second_smallest_to_b(t_stack *stack, int position)
 	}
 	if (position == 4)
 		reverse_rotate_a(stack);
-	push_b(stack);
+    if (stack_ordered(stack, 4) == 1)
+        push_b(stack);
 }
 
 void    push_smallest_to_b(t_stack *stack, int position)
@@ -31,7 +32,8 @@ void    push_smallest_to_b(t_stack *stack, int position)
 	}
 	if (position == 5)
 		reverse_rotate_a(stack);
-	push_b(stack);
+    if (stack_ordered(stack, 5) == 1)
+    	push_b(stack);
 }
 
 void    find_first(t_stack *stack)
@@ -75,8 +77,10 @@ void    sort_five_nodes(t_stack *stack, int qtt_nodes)
     if (qtt_nodes == 5)
 		find_first(stack);
     find_first(stack);
-    sort_three_nodes(stack);
-    if (qtt_nodes == 5)
+    if (stack_ordered(stack, 4) == 1)
+        sort_three_nodes(stack);
+    if (qtt_nodes == 5 && stack->b != NULL)
         push_a(stack);
-    push_a(stack);
+    if (stack->b != NULL)
+        push_a(stack);
 }
