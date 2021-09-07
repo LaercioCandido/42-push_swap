@@ -1,13 +1,13 @@
 #include "../../includes/push_swap.h"
 
-void	init_stacks(t_stack *stack)
+void		init_stacks(t_stack *stack)
 {
 	stack->a = NULL;
 	stack->b = NULL;
 	stack->largest_data = INT_MIN;
 }
 
-void init_stack_a(t_dlist **stack_a, int argc, int *normalized)
+void		init_stack_a(t_dlist **stack_a, int argc, int *normalized)
 {
 	int i;
 
@@ -32,13 +32,13 @@ static void	setup_array_from_argv(char **argv, int *array, int size)
 	}
 }
 
-int	*normalized_by_index(char **argv, int size)
+int			*normalized_by_index(char **argv, int size)
 {
-	int		i;
-	int		*original;
-	int		*sorted;
-	int		*normalized;
-	int		j;
+	int	i;
+	int	*original;
+	int	*sorted;
+	int	*normalized;
+	int	j;
 
 	original = (int *)ft_calloc(sizeof(int), size);
 	sorted = (int *)ft_calloc(sizeof(int), size);

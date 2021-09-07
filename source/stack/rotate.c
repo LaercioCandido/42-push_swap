@@ -3,13 +3,13 @@
 static void	rotate_list(t_dlist **stack)
 {
 	t_dlist	*head;
-    int     number;
+	int		number;
 
-    head = *stack;
+	head = *stack;
 	if (head == NULL)
 		return ;
-    number = head->data;
-    ft_dlstadd_back(stack, ft_dlstnew(number));
+	number = head->data;
+	ft_dlstadd_back(stack, ft_dlstnew(number));
 	head = head->next;
 	*stack = head;
 }

@@ -15,15 +15,14 @@ int	most_significant_bit(int largest_data)
 	return (i);
 }
 
-
 int	remaining_nodes_are_ordered(t_stack *stack)
 {
 	t_dlist	*current;
 	int		i;
-    int     size_list;
+	int		size_list;
 
 	i = 0;
-    size_list = ft_dlstsize(stack->a);
+	size_list = ft_dlstsize(stack->a);
 	current = stack->a;
 	while (i < size_list - 1)
 	{
@@ -63,7 +62,7 @@ void	radix_sort(t_stack *stack)
 	{
 		push_bits_on_zero(stack, i);
 		while (stack->b != NULL)
-		    push_a(stack);
+			push_a(stack);
 		i++;
 	}
 }

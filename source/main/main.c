@@ -3,7 +3,7 @@
 static int is_repeated(char **argv, int number, int i)
 {
 	int j;
-	
+
 	j = 0;
 	while (j < i)
 	{
@@ -79,8 +79,7 @@ static char	**check_params(int *argc, char **argv)
 	return (argv);
 }
 
-
-int main(int argc, char *argv[])
+int			main(int argc, char *argv[])
 {
 	t_stack	stack;
 	int		*normalized;
@@ -95,37 +94,9 @@ int main(int argc, char *argv[])
 	check_args(argc, argv);
     init_stacks(&stack);
 	normalized = normalized_by_index(argv, argc);
-	/*
-	int i = 0;
-	while (i < 2)
-	{
-		printf("normalized[%d] = %d\n", i, normalized[i]);
-		i++;
-	}
-	*/
-	//init_stack_a(&stack.a, argc, argv);
 	init_stack_a(&stack.a, argc, normalized);
 	largest_data(&stack); //	//stack->largest_data = argc;
 	sort_stack(&stack, argc);
-
-	/*
-	printf("argumento A: %i\n", stack.a->data);
-	while (stack.a->next != NULL)
-	{
-		stack.a = stack.a->next;
-		printf("argumento A: %i\n", stack.a->data);
-	}
-
-	
-	if (stack.b != NULL)
-		printf("\nargumento B: %i\n", stack.b->data);
-	while (stack.b->next != NULL)
-	{
-		stack.b = stack.b->next;
-		printf("argumento B: %i\n", stack.b->data);
-	}
-	*/
-		
 	free(normalized);
 	return (0);
 }

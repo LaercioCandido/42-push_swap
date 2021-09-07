@@ -3,23 +3,23 @@
 static void	reverse_rotate_list(t_dlist **stack)
 {
 	t_dlist	*head;
-    t_dlist *last;
-    t_dlist *pointer;
-    int     number;
+	t_dlist	*last;
+	t_dlist	*pointer;
+	int		number;
 
 	head = *stack;
-    last = ft_dlstlast(*stack);
+	last = ft_dlstlast(*stack);
 	if (head == NULL || last == NULL)
 		return ;
-    pointer = last->previous;
-    pointer->next = NULL;
-    number = last->data;
-    ft_dlstadd_front(stack, ft_dlstnew(number));
+	pointer = last->previous;
+	pointer->next = NULL;
+	number = last->data;
+	ft_dlstadd_front(stack, ft_dlstnew(number));
 	head = head->previous;
 	*stack = head;
 }
 
-void	reverse_rotate_a(t_stack *stack)
+void		reverse_rotate_a(t_stack *stack)
 {
 	reverse_rotate_list(&stack->a);
 	ft_putstr_fd("rra\n", 1);

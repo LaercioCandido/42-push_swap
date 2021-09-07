@@ -80,5 +80,3 @@ char			**ft_split(const char *s, char c)
 	split[j] = NULL;
 	return (split);
 }
-
-
