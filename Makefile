@@ -34,19 +34,14 @@ $(NAME):	$(OBJS)
 			@echo "created push_swap executable file successfully!"
 
 test:		$(NAME)
-			cp ./tools/checker_linux .
-			bash ./tools/tester.sh
-
-fclean:
-			@rm -f $(NAME)
-			@rm -f $(OBJECTS) $(NAME) screen_shot.bmp
+			bash ./tester.sh
 
 clean:
 			@$(RM) $(OBJS)
 			@$(RM) -r $(DIR_OBJS)
 			@echo "Cleanup completed!"
 
-fclean: 	clean
+fclean:		clean
 			@$(RM) $(NAME)
 
 re:			fclean all
