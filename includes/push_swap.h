@@ -6,14 +6,14 @@
 # include <limits.h>
 # include <stddef.h>
 
-typedef struct		s_dlist
+typedef struct s_dlist
 {
 	int				data;
 	struct s_dlist	*next;
 	struct s_dlist	*previous;
 }					t_dlist;
 
-typedef struct		s_stack
+typedef struct s_stack
 {
 	t_dlist			*a;
 	t_dlist			*b;
