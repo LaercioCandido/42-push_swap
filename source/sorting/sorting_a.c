@@ -2,18 +2,18 @@
 
 void	sort_three_nodes(t_stack *stack)
 {
-	int first;
-	int second;
-	int third;
-	t_dlist *pointer;
+	int		first;
+	int		second;
+	int		third;
+	t_dlist	*pointer;
 
 	pointer = stack->a->next;
 	first = pointer->previous->data;
 	second = pointer->data;
 	third = pointer->next->data;
-	if ((first < second && first < third && second > third) ||
-		(first > second && first < third && second < third) ||
-		(first > second && first > third && second > third))
+	if ((first < second && first < third && second > third)
+		|| (first > second && first < third && second < third)
+		|| (first > second && first > third && second > third))
 		swap_a(stack);
 	pointer = stack->a->next;
 	first = pointer->previous->data;
@@ -25,7 +25,7 @@ void	sort_three_nodes(t_stack *stack)
 		reverse_rotate_a(stack);
 }
 
-int		stack_ordered(t_stack *stack, int size)
+int	stack_ordered(t_stack *stack, int size)
 {
 	int		i;
 	int		number;

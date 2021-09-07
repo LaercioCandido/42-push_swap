@@ -2,7 +2,7 @@
 
 size_t	ft_strlen(const char *frase)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (frase[i] != '\0')
@@ -12,11 +12,11 @@ size_t	ft_strlen(const char *frase)
 	return (i);
 }
 
-static int		count_size(char const *s, char c)
+static int	count_size(char const *s, char c)
 {
-	int tamanho;
-	int controle;
-	int i;
+	int	tamanho;
+	int	controle;
+	int	i;
 
 	i = 0;
 	tamanho = 0;
@@ -35,13 +35,13 @@ static int		count_size(char const *s, char c)
 	return (tamanho);
 }
 
-static char		*ret(const char *fr, int inicial, int final)
+static char	*ret(const char *fr, int inicial, int final)
 {
 	char	*string;
 	int		i;
 
 	i = 0;
-	string = (char*)malloc((final - inicial + 1) * sizeof(char));
+	string = (char *)malloc((final - inicial + 1) * sizeof(char));
 	while (final > inicial)
 	{
 		string[i] = fr[inicial];
@@ -52,7 +52,7 @@ static char		*ret(const char *fr, int inicial, int final)
 	return (string);
 }
 
-char			**ft_split(const char *s, char c)
+char	**ft_split(const char *s, char c)
 {
 	char	**split;
 	int		inicial;
@@ -64,7 +64,7 @@ char			**ft_split(const char *s, char c)
 	i = -1;
 	j = 0;
 	inicial = -1;
-	split = malloc((count_size(s, c) + 1) * sizeof(char*));
+	split = malloc((count_size(s, c) + 1) * sizeof(char *));
 	if (split == 0)
 		return (NULL);
 	while (++i <= ft_strlen(s))

@@ -19,7 +19,7 @@ static void	reverse_rotate_list(t_dlist **stack)
 	*stack = head;
 }
 
-void		reverse_rotate_a(t_stack *stack)
+void	reverse_rotate_a(t_stack *stack)
 {
 	reverse_rotate_list(&stack->a);
 	ft_putstr_fd("rra\n", 1);

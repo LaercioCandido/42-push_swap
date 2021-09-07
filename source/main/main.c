@@ -1,8 +1,8 @@
 #include "../../includes/push_swap.h"
 
-static int is_repeated(char **argv, int number, int i)
+static int	is_repeated(char **argv, int number, int i)
 {
-	int j;
+	int	j;
 
 	j = 0;
 	while (j < i)
@@ -51,20 +51,6 @@ static void	check_args(int argc, char **argv)
 	}
 }
 
-void		largest_data(t_stack *stack)
-{
-	t_dlist *current;
-
-	current = stack->a;
-	while (current)
-	{
-		if (current->data > stack->largest_data)
-			stack->largest_data = current->data;
-		//printf("stack->a: %i\n", current->data);
-		current = current->next;
-	}
-}
-
 static char	**check_params(int *argc, char **argv)
 {
 	int	i;
@@ -79,23 +65,22 @@ static char	**check_params(int *argc, char **argv)
 	return (argv);
 }
 
-int			main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	t_stack	stack;
 	int		*normalized;
 
 	if (argc < 2)
 		return (0);
-	//reset_flags;
 	argc--;
 	argv = &argv[1];
 	if (argc == 1)
 		argv = check_params(&argc, argv);
 	check_args(argc, argv);
-    init_stacks(&stack);
+	init_stacks(&stack);
 	normalized = normalized_by_index(argv, argc);
 	init_stack_a(&stack.a, argc, normalized);
-	largest_data(&stack); //	//stack->largest_data = argc;
+	largest_data(&stack);
 	sort_stack(&stack, argc);
 	free(normalized);
 	return (0);

@@ -1,6 +1,6 @@
 #include "../../includes/push_swap.h"
 
-void		*ft_calloc(size_t count, size_t size)
+void	*ft_calloc(size_t count, size_t size)
 {
 	char	*mem;
 	size_t	i;
@@ -20,7 +20,7 @@ void		*ft_calloc(size_t count, size_t size)
 	return (mem);
 }
 
-int			ft_isdigit(int c)
+int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
 	{
@@ -42,7 +42,7 @@ static int	atoi_isspace(int c)
 	return (0);
 }
 
-double		ft_atoi(const char *nptr)
+double	ft_atoi(const char *nptr)
 {
 	double	number;
 	int		sign;

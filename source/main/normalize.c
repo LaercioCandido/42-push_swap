@@ -1,15 +1,15 @@
 #include "../../includes/push_swap.h"
 
-void		init_stacks(t_stack *stack)
+void	init_stacks(t_stack *stack)
 {
 	stack->a = NULL;
 	stack->b = NULL;
 	stack->largest_data = INT_MIN;
 }
 
-void		init_stack_a(t_dlist **stack_a, int argc, int *normalized)
+void	init_stack_a(t_dlist **stack_a, int argc, int *normalized)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	*stack_a = ft_dlstnew(normalized[i]);
@@ -32,7 +32,7 @@ static void	setup_array_from_argv(char **argv, int *array, int size)
 	}
 }
 
-int			*normalized_by_index(char **argv, int size)
+int	*normalized_by_index(char **argv, int size)
 {
 	int	i;
 	int	*original;
@@ -58,4 +58,17 @@ int			*normalized_by_index(char **argv, int size)
 	free(original);
 	free(sorted);
 	return (normalized);
+}
+
+void	largest_data(t_stack *stack)
+{
+	t_dlist	*current;
+
+	current = stack->a;
+	while (current)
+	{
+		if (current->data > stack->largest_data)
+			stack->largest_data = current->data;
+		current = current->next;
+	}
 }
