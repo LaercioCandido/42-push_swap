@@ -83,5 +83,7 @@ int	main(int argc, char *argv[])
 	largest_data(&stack);
 	sort_stack(&stack, argc);
 	free(normalized);
+	ft_dlstclear(&stack.a);
+	ft_dlstclear(&stack.b);
 	return (0);
 }
