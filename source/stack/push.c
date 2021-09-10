@@ -10,6 +10,7 @@ void	push_a(t_stack	*stack)
 	top_b = stack->b;
 	number = top_b->data;
 	stack->b = top_b->next;
+	free(top_b);
 	if (stack->a == NULL)
 		stack->a = ft_dlstnew(number);
 	else
@@ -27,6 +28,7 @@ void	push_b(t_stack	*stack)
 	top_a = stack->a;
 	number = top_a->data;
 	stack->a = top_a->next;
+	free(top_a);
 	if (stack->b == NULL)
 		stack->b = ft_dlstnew(number);
 	else

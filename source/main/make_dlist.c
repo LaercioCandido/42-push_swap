@@ -19,7 +19,8 @@ t_dlist	*ft_dlstnew(int data)
 {
 	t_dlist	*pointer;
 
-	pointer = (t_dlist *)malloc(sizeof(t_stack));
+	pointer = (t_dlist *)malloc(sizeof(t_dlist));
+	//pointer = (t_dlist *)ft_calloc(sizeof(t_dlist), 1);
 	if (!(pointer))
 		return_error();
 	pointer->data = data;

@@ -10,8 +10,8 @@ static void	rotate_list(t_dlist **stack)
 		return ;
 	number = head->data;
 	ft_dlstadd_back(stack, ft_dlstnew(number));
-	head = head->next;
-	*stack = head;
+	*stack = head->next;
+	free(head);
 }
 
 void	rotate_a(t_stack *stack)

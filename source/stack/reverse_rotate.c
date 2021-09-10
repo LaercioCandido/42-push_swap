@@ -16,6 +16,7 @@ static void	reverse_rotate_list(t_dlist **stack)
 	number = last->data;
 	ft_dlstadd_front(stack, ft_dlstnew(number));
 	head = head->previous;
+	free(last);
 	*stack = head;
 }
 

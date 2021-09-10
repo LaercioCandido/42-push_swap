@@ -84,6 +84,7 @@ int	main(int argc, char *argv[])
 	sort_stack(&stack, argc);
 	free(normalized);
 	ft_dlstclear(&stack.a);
-	ft_dlstclear(&stack.b);
+	if (stack.b)
+		ft_dlstclear(&stack.b);
 	return (0);
 }
