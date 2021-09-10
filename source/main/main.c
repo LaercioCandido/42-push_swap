@@ -51,20 +51,6 @@ static void	check_args(int argc, char **argv)
 	}
 }
 
-static char	**check_params(int *argc, char **argv)
-{
-	int	i;
-
-	i = 0;
-	if (!(argv[0][0]))
-		return (0);
-	argv = ft_split(argv[0], ' ');
-	while (argv[i] != NULL)
-		i++;
-	*argc = i;
-	return (argv);
-}
-
 int	main(int argc, char *argv[])
 {
 	t_stack	stack;
@@ -74,8 +60,6 @@ int	main(int argc, char *argv[])
 		return (0);
 	argc--;
 	argv = &argv[1];
-	if (argc == 1)
-		argv = check_params(&argc, argv);
 	check_args(argc, argv);
 	init_stacks(&stack);
 	normalized = normalized_by_index(argv, argc);

@@ -2,7 +2,7 @@
 NAME		= push_swap
 
 CC			= clang
-CFLAGS		= -Wall -Wextra -Werror -g -fsanitize=leak -fno-omit-frame-pointer
+CFLAGS		= -Wall -Wextra -Werror -g -fsanitize=address -fno-omit-frame-pointer
 RM			= /bin/rm -f
 
 DIR_SRCS	= source
